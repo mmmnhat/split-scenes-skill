@@ -48,6 +48,10 @@ An agentic skill for frame-accurate video scene extraction, designed to process 
 7. **Interactive Preview Widget (`generate_audio_widget.py`)**
    - Standalone dark-mode HTML widget with 6-class audio filtering, speech text bubbles, impact time badges, and base64 keyframe previews.
 
+8. **Self-Bootstrapping Auto-Installer (`env_bootstrap.py`)**
+   - Zero manual setup: Scripts automatically check for all required Python packages (`opencv-python`, `scikit-image`, `numpy`, `scipy`, `librosa`, `faster-whisper`, `yt-dlp`) and CLI tools (`ffmpeg`, `ffprobe`).
+   - If any dependency is missing, it is automatically installed in the background via `pip` or Homebrew with zero user friction.
+
 ---
 
 ## 📁 Repository Structure
@@ -59,6 +63,7 @@ An agentic skill for frame-accurate video scene extraction, designed to process 
 ├── requirements.txt                  # Python dependencies
 ├── .gitignore                        # Git exclusion rules
 └── scripts/
+    ├── env_bootstrap.py              # Self-bootstrapping auto-installer for dependencies
     ├── frame_by_frame_detector.py    # Fast sequential frame scanner + ORB intro matching
     ├── ssim_continuity_aggregator.py # Anti-over-split event aggregator (SSIM + HSV)
     ├── intro_duplicate_resolver.py   # Intro teaser matching and clip promotion

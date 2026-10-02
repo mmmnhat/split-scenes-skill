@@ -1,5 +1,14 @@
-import cv2
 import os
+import sys
+
+# Auto-require and self-install dependencies
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    import env_bootstrap
+except Exception:
+    pass
+
+import cv2
 import json
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont

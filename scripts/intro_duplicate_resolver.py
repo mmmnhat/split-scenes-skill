@@ -1,8 +1,17 @@
+import os
+import sys
+
+# Auto-require and self-install dependencies
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    import env_bootstrap
+except Exception:
+    pass
+
 import cv2
 import json
 import numpy as np
 import time
-import os
 import argparse
 
 def resolve_intro_duplicates(video_path, scenes_json_path, intro_cutoff_sec=20.0, similarity_threshold=0.68):

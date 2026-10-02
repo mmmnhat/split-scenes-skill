@@ -1,6 +1,15 @@
+import os
+import sys
+
+# Auto-require and self-install dependencies
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    import env_bootstrap
+except Exception:
+    pass
+
 import cv2
 import json
-import os
 import argparse
 import numpy as np
 from skimage.metrics import structural_similarity as ssim

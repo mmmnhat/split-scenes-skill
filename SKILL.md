@@ -28,10 +28,10 @@ Skill bóc tách cảnh video chuẩn xác từng frame: quét proxy siêu tốc
 >    * 🔢 **Quy cách đánh số:** Đánh số kiểu gì? (2 chữ số `01`, 3 chữ số `001`, 4 chữ số `0001`, bắt đầu từ số mấy).
 >    * 📝 **Hậu tố ngữ nghĩa (Suffix):** User muốn tên file vật lý là `prefix_số.mp4` (VD: `fail_001.mp4` — chuẩn khuyến nghị để tránh lỗi đường dẫn và ký tự tiếng Việt) hay có kèm Title tiếng Việt vào tên file (VD: `fail_001_xe_tai_dam_cao_toc.mp4`)?
 >
-> 💡 **Tại sao hỏi Prefix & Thư mục ngay đầu Phase 2?**
-> - Để khi Agent lập `scene_db.json`, trường `file_name` (VD: `fail_001.mp4`) và `file_path` đã được gắn **chuẩn xác 100% với từng cảnh ngay từ đầu**.
-> - Khi xử lý trùng lặp đoạn Intro (đôn clip thân video lên đầu, xóa mẩu teaser intro): `scene_db.json` sẽ tự động đánh số lại tên file `fail_001.mp4, fail_002.mp4...` liền mạch trước khi cắt thật.
-> - Đến Phase 3 (Split): FFmpeg chỉ việc đọc `scene_db.json` và cắt chuẩn đúng tên file đó, không có bất kỳ độ lệch nào giữa database và file thực tế ngoài ổ đĩa!
+> 3. **Tự động Require & Tự Cài Đặt Môi Trường (Zero Manual Setup):**
+>    * Toàn bộ các script trong skill đều tích hợp module tự khởi động [`scripts/env_bootstrap.py`](file:///Users/mmmnhat/.gemini/antigravity/skills/split-scenes/scripts/env_bootstrap.py).
+>    * Khi chạy bất kỳ tác vụ nào, hệ thống **tự động kiểm tra 100% các package cần thiết**: `opencv-python`, `scikit-image`, `numpy`, `scipy`, `librosa`, `faster-whisper`, `yt-dlp` và các công cụ CLI (`ffmpeg`, `ffprobe`).
+>    * Nếu máy tính thiếu bất kỳ thư viện hay công cụ nào, script **TỰ ĐỘNG CÀI ĐẶT NGAY LẬP TỨC** (`pip install` / `brew install`) trong nền, **tuyệt đối không bắt User phải gõ lệnh cài đặt thủ công hay can thiệp terminal!**
 
 ---
 

@@ -1,4 +1,13 @@
 import os
+import sys
+
+# Auto-require and self-install dependencies
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    import env_bootstrap
+except Exception:
+    pass
+
 import json
 import subprocess
 import time

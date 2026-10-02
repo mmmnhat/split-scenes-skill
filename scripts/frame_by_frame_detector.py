@@ -1,8 +1,17 @@
+import os
+import sys
+
+# Auto-require and self-install dependencies
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    import env_bootstrap
+except Exception:
+    pass
+
 import cv2
 import numpy as np
 import time
 import json
-import os
 import argparse
 from PIL import Image, ImageDraw, ImageFont
 
