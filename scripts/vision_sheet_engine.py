@@ -14,10 +14,19 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 def get_font(size):
-    try:
-        return ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", size)
-    except:
-        return ImageFont.load_default()
+    font_paths = [
+        "C:/Windows/Fonts/arial.ttf",
+        "C:/Windows/Fonts/segoeui.ttf",
+        "/System/Library/Fonts/Helvetica.ttc",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    ]
+    for p in font_paths:
+        if os.path.exists(p):
+            try:
+                return ImageFont.truetype(p, size)
+            except Exception:
+                pass
+    return ImageFont.load_default()
 
 def build_dense_vision_sheet(video_path, start_frame, total_grid_frames=64, step=5, cols=8, rows=8, output_path="dense_sheet.jpg"):
     """
